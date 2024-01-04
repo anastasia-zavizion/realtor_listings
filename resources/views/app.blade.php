@@ -11,8 +11,9 @@
 
     </head>
     <body>
-    @inertia
-
+    <div id="inertiaDiv">
+        @inertia
+    </div>
     <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
