@@ -8,6 +8,12 @@
                </Link>
            </div>
 
+           <div>
+
+               <Link as="button" method="DELETE" :href="`/listing/${listing.id}`">Delete
+               </Link>
+           </div>
+
        </div>
 
 
