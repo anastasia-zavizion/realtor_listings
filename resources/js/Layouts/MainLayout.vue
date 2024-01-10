@@ -1,6 +1,6 @@
 <template>
-    <Link href="/">Index</Link>
-    <Link href="/hello">Show page</Link>
+    <Link class="link" href="/listing">Listing</Link>
+    <Link class="link" href="/listing/create">Create</Link>
 
    <div v-if="successMessage" class="success">
         {{successMessage}}
@@ -31,9 +31,8 @@ const successMessage = computed(()=>{
     background-color: green;
     color: white;
 }
-
-.errors{
-    background-color: red;
-    color: white;
+.link{
+    margin-right: 10px;
 }
+
 </style>

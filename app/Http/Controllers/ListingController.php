@@ -62,9 +62,11 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Listing $listing)
     {
-        //
+        return inertia('Listing/Edit', [
+            'listing'=>$listing
+        ]);
     }
 
     /**
@@ -74,9 +76,10 @@ class ListingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ListingRequest $request, Listing $listing)
     {
-        //
+        $listing->update($request->validated());
+        return redirect()->route('listing.index')->with('success','Listing was updated');
     }
 
     /**
