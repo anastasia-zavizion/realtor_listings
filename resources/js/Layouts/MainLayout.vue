@@ -6,6 +6,7 @@
         {{successMessage}}
     </div>
 
+
     <slot>
     </slot>
 </template>
@@ -28,6 +29,11 @@ const successMessage = computed(()=>{
 <style scoped>
 .success{
     background-color: green;
+    color: white;
+}
+
+.errors{
+    background-color: red;
     color: white;
 }
 </style>
