@@ -86,9 +86,9 @@ const form = useForm({
 
 const handleSubmit = () => {
     if(props.methodName === 'create'){
-        form.post('/listing');
+        form.post(route('listing.store'));
     }else{
-        form.put(`/listing/${props.listing.id}`);
+        form.put(route('listing.update',props.listing.id));
     }
 };
 

@@ -16,8 +16,9 @@ createInertiaApp({
 import { createApp, h } from "vue";
 import { createInertiaApp } from '@inertiajs/vue3'
 import { InertiaProgress } from "@inertiajs/progress";
-
 InertiaProgress.init();
+
+import {ZiggyVue }  from '../../vendor/tightenco/ziggy/dist/vue.es.js';
 
 createInertiaApp({
     resolve: async (name) => {
@@ -30,6 +31,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(ZiggyVue)
             .mount(el);
     },
 });
