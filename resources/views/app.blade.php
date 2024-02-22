@@ -4,16 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
-
-
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         @routes
         @inertiaHead
-
-
     </head>
-    <body class="bg-green-200">
+    <body class="text-gray-800 dark:text-gray-300">
     <div id="inertiaDiv">
         @inertia
     </div>

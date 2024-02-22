@@ -1,14 +1,30 @@
 <template>
-    <Link class="link" href="/listing">Listing</Link>
-    <Link class="link" href="/listing/create">Create</Link>
+    <header class="border-b border-gray-200 dark:border-gray-700 bg-white w-full">
+        <div class="container mx-auto">
+            <nav class="p-4 flex items-center justify-between">
+                <div class="text-lg text-indigo-600  font-bold text-centered">
+                    <Link class="link" :href="route('listing.index')">Home</Link>
+                </div>
 
-   <div v-if="successMessage" class="success">
-        {{successMessage}}
-    </div>
+                <div>
+                    <Link class="link" :href="route('listing.index')">Listing</Link>
+                </div>
+                <div>
+                    <Link class="link bg-indigo-600  hover:bg-indigo-500 text-white font-medium p-2 rounded" :href="route('listing.create')">+ New Listing</Link>
+                </div>
+            </nav>
+        </div>
+    </header>
 
+    <main class="container mx-auto p-4">
+        <div v-if="!successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-3">
+            fsdfsdfdf
+            {{ successMessage }}
+        </div>
 
-    <slot>
-    </slot>
+        <slot>
+        </slot>
+    </main>
 </template>
 
 <script setup>
@@ -17,22 +33,10 @@ import {Link, usePage} from '@inertiajs/vue3';
 
 import {ref, computed} from 'vue';
 
-//page.props.flash.success
 const page = usePage();
 
-const successMessage = computed(()=>{
+const successMessage = computed(() => {
     return page.props.flash.success;
 });
 
 </script>
-
-<style scoped>
-.success{
-    background-color: green;
-    color: white;
-}
-.link{
-    margin-right: 10px;
-}
-
-</style>
