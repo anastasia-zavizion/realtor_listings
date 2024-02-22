@@ -5,12 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel</title>
 
+
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
         @routes
         @inertiaHead
 
 
     </head>
-    <body>
+    <body class="bg-green-200">
     <div id="inertiaDiv">
         @inertia
     </div>

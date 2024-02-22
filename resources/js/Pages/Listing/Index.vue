@@ -1,5 +1,5 @@
 <template>
-       <div :key="listing.id"  v-for="listing in listings">
+       <div class="text-3xl font-bold underline" :key="listing.id"  v-for="listing in listings">
            <Link :href="route('listing.show',listing.id)"><ListingAddress :listing="listing"></ListingAddress>
            </Link>
 
