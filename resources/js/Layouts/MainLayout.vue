@@ -17,8 +17,7 @@
     </header>
 
     <main class="container mx-auto p-4">
-        <div v-if="!successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-3">
-            fsdfsdfdf
+        <div v-if="successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-3">
             {{ successMessage }}
         </div>
 
