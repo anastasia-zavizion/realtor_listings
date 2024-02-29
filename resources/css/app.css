@@ -1,3 +1,20 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+@layer components {
+    .label{
+        @apply block text-gray-800 font-medium;
+
+    }
+
+    .input{
+        @apply block w-full border-gray-200 p-2 border;
+    }
+
+    .btn{
+        @apply bg-indigo-600  hover:bg-indigo-500 text-white font-medium p-2 rounded;
+    }
+}
+
