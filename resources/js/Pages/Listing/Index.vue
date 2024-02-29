@@ -7,14 +7,13 @@
                   <ListingAddress :listing="listing" class="text-gray-800"></ListingAddress>
               </Link>
 
-              <div>
-                  <Link :href="route('listing.edit',listing.id)">Edit
+              <div class="mb-2 mt-2">
+                  <Link class="btnSmall" :href="route('listing.edit',listing.id)">Edit
                   </Link>
               </div>
 
               <div>
-
-                  <Link as="button" method="DELETE" :href="route('listing.destroy',listing.id)">Delete
+                  <Link class="btnSmall" as="button" method="DELETE" :href="route('listing.destroy',listing.id)">Delete
                   </Link>
               </div>
 

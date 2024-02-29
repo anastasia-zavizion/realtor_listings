@@ -16,5 +16,13 @@
     .btn{
         @apply bg-indigo-600  hover:bg-indigo-500 text-white font-medium p-2 rounded;
     }
+    .btnSmall{
+        @apply bg-indigo-600  hover:bg-indigo-500 text-white font-medium p-1 rounded;
+    }
+
+    .inputError{
+        @apply text-sm text-red-500;
+
+    }
 }
 
