@@ -18,9 +18,28 @@
 
             <Box>
                 <template #header>
-                    Offer
+                    Monthly payment
                 </template>
-                Make offer
+               <div>
+                   <label class="label">Interest rate ({{interestRate}}%)</label>
+                   <input v-model.number="interestRate" type="range" min="0.1" max="30" step="0.1" class="w-full h-4 bg-gray-200 rounded-lg appearence-none coursor-pointer">
+
+                   <label class="label">Duration ({{duration}} years)</label>
+                   <input v-model.number="duration" type="range" min="3" max="35" step="1" class="w-full h-4 bg-gray-200 rounded-lg appearence-none coursor-pointer">
+               </div>
+
+                <div class="text-gray-600 mt-2">
+                    <div class="text-gray-400">
+                        Your monthly payment
+                        <Price :price="monthlyPayment"></Price>
+                    </div>
+
+                 <div class="text-gray-400">
+                        Total paid
+                        <Price :price="totalPaid"></Price>
+                    </div>
+
+                </div>
             </Box>
         </div>
     </div>
@@ -32,10 +51,18 @@ import ListingAddress from "../../Components/ListingAddress";
 import Price from "../../Components/Price";
 import ListingSpace from "../../Components/ListingSpace";
 import Box from "../../Components/UI/Box";
+import {computed, ref} from "vue";
+import {useMonthlyPayment} from "../../Composables/useMonthlyPayment";
 
-defineProps({
+const props = defineProps({
     'listing':Object
 })
+
+const interestRate = ref(2.5);
+const duration = ref(3);
+
+const { monthlyPayment , totalPaid} = useMonthlyPayment(props.listing.price, interestRate, duration)
+
 </script>
 
 <style scoped>
