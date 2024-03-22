@@ -14,8 +14,6 @@ class AuthController extends Controller
     }
 
     public function store(Request $request){
-
-
         if(Auth::attempt($request->validate([
             'email'=>'required|string|email',
             'password'=>'required|string'
@@ -23,15 +21,11 @@ class AuthController extends Controller
 
             $request->session()->regenerate(); //regenerate session for security
             return redirect()->intended();
-
-
-
         }else{
             throw ValidationException::withMessages([
                 'email'=> 'Authentication failed'
             ]);
         }
-
     }
 
     public function destroy(){
