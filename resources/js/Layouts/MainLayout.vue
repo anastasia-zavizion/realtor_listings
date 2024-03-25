@@ -10,13 +10,33 @@
                     <Link class="link" :href="route('listing.index')">Listing</Link>
                 </div>
                 <div>
+
+                </div>
+                <div class="flex gap-4 items-center" v-if="user">
+                    <div class="text-sm text-gray-500">{{user.name}}</div>
                     <Link class="link btn" :href="route('listing.create')">+ New Listing</Link>
+                    <div>
+
+                        <Link class="link btn" method="delete" as="button" :href="route('logout')">Logout</Link>
+
+
+<!--                        <form action="">
+                            <Link class="link btn" :href="route('logout')">Logout</Link>
+                        </form>-->
+
+                    </div>
+                </div>
+                <div class="flex gap-4 items-center" v-else>
+                    <Link class="link btn" :href="route('login')">Sign-In</Link>
                 </div>
             </nav>
         </div>
     </header>
 
     <main class="container mx-auto p-4">
+
+
+
         <div v-if="successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-3">
             {{ successMessage }}
         </div>
@@ -36,6 +56,10 @@ const page = usePage();
 
 const successMessage = computed(() => {
     return page.props.flash.success;
+});
+
+const user = computed(() => {
+    return page.props.user;
 });
 
 </script>
