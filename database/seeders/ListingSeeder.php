@@ -14,6 +14,8 @@ class ListingSeeder extends Seeder
      */
     public function run()
     {
-        Listing::factory(10)->create();
+        Listing::factory(10)->create([
+            'user_id'=>1
+        ]);
     }
 }
