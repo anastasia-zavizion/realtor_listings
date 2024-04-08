@@ -14,7 +14,7 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::get('/',[\App\Http\Controllers\ListingController::class, 'index']);
-Route::get('/hello',[\App\Http\Controllers\IndexController::class, 'show']);
+Route::get('/hello',[\App\Http\Controllers\IndexController::class, 'index']);
 Route::resource('listing', \App\Http\Controllers\ListingController::class);
 
 Route::get('login', [AuthController::class, 'create'])->name('login');

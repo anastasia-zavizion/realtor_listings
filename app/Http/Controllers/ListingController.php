@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ListingRequest;
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Listing::class, 'listing');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +35,8 @@ class ListingController extends Controller
      */
     public function create()
     {
+       // $this->authorize('create',Listing::class);
+
         return inertia('Listing/Create');
     }
 
@@ -39,7 +48,7 @@ class ListingController extends Controller
      */
     public function store(ListingRequest $request)
     {
-        Listing::create($request->validated());
+        $request->user()->listings()->create($request->validated());
         return redirect()->route('listing.index')->with('success','Listing was created');
     }
 
@@ -51,6 +60,8 @@ class ListingController extends Controller
      */
     public function show(Listing $listing)
     {
+       // $this->authorize('view',$listing);
+
         return inertia('Listing/Show', [
             'listing'=>$listing
         ]);

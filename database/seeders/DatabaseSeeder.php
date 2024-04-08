@@ -20,6 +20,11 @@ class DatabaseSeeder extends Seeder
             'name'=>'nastya'
         ]);
 
+        \App\Models\User::factory()->create([
+            'email'=>'kostya@gmail.com',
+            'name'=>'nastya'
+        ]);
+
         $this->call([ListingSeeder::class]);
     }
 }
