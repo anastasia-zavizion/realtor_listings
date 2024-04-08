@@ -17,6 +17,10 @@
 
             <div class="mb-2">
                 <button class="btn w-full" type="submit">Login</button>
+
+                <div class="mt-2 text-center">
+                    <Link class="link text-sm text-gray-500" :href="route('user-account.create')">Need an account? Click here</Link>
+                </div>
             </div>
         </div>
     </form>
@@ -24,7 +28,8 @@
 </template>
 
 <script setup>
-import {useForm} from "@inertiajs/vue3";
+
+import {Link,useForm} from "@inertiajs/vue3";
 
 const form = useForm({
     email:null,

@@ -87,10 +87,11 @@ var _hoisted_12 = {
   "class": "flex gap-4 items-center"
 };
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sign-In");
-var _hoisted_14 = {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Register");
+var _hoisted_15 = {
   "class": "container mx-auto p-4"
 };
-var _hoisted_15 = {
+var _hoisted_16 = {
   key: 0,
   "class": "bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-3"
 };
@@ -137,7 +138,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [_hoisted_13];
     }),
     _: 1 /* STABLE */
-  }, 8 /* PROPS */, ["href"])]))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_14, [$setup.successMessage ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.successMessage), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])], 64 /* STABLE_FRAGMENT */);
+  }, 8 /* PROPS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
+    "class": "link btn",
+    href: _ctx.route('user-account.create')
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_14];
+    }),
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["href"])]))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_15, [$setup.successMessage ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.successMessage), 1 /* TEXT */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")])], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),

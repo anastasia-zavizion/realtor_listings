@@ -28,6 +28,7 @@
                 </div>
                 <div class="flex gap-4 items-center" v-else>
                     <Link class="link btn" :href="route('login')">Sign-In</Link>
+                    <Link class="link btn" :href="route('user-account.create')">Register</Link>
                 </div>
             </nav>
         </div>

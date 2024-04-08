@@ -18,7 +18,7 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import { InertiaProgress } from "@inertiajs/progress";
 InertiaProgress.init();
 
-import {ZiggyVue }  from '../../vendor/tightenco/ziggy/dist/vue.es.js';
+import {ZiggyVue }  from '../../vendor/tightenco/ziggy/dist/index';
 
 createInertiaApp({
     resolve: async (name) => {
