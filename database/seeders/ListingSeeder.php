@@ -17,5 +17,9 @@ class ListingSeeder extends Seeder
         Listing::factory(10)->create([
             'user_id'=>1
         ]);
+
+        Listing::factory(10)->create([
+            'user_id'=>2
+        ]);
     }
 }

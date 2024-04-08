@@ -20,7 +20,6 @@ class IndexController extends Controller
 
         dd($user);*/
 
-
         return inertia('Listing/Index');
     }
 
