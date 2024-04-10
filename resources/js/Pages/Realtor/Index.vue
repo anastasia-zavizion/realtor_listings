@@ -20,8 +20,9 @@
 
                     <Link class="btn-outline text-xs font-medium">Previw</Link>
                     <Link class="btn-outline text-xs font-medium">Edit</Link>
-                    <Link class="btn-outline text-xs font-medium">Delete</Link>
 
+                    <Link class="btnSmall" as="button" method="DELETE" :href="route('realtor.listing.destroy',listing.id)">Delete
+                    </Link>
 
                 </div>
 
