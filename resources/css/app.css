@@ -43,5 +43,9 @@
         @apply text-sm text-red-500;
 
     }
+
+    .btn-outline{
+        @apply p-2 rounded border border-gray-300 hover:border-gray-400;
+    }
 }
 
