@@ -22,3 +22,8 @@ Route::post('login', [AuthController::class, 'store'])->name('login.store');
 Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 
 Route::resource('user-account', \App\Http\Controllers\UserAccountController::class)->only(['create', 'store']);
+
+
+Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (){
+    Route::resource('listing', \App\Http\Controllers\RealtorListingController::class);
+});
