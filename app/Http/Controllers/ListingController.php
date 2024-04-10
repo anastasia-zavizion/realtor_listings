@@ -18,20 +18,22 @@ class ListingController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filters = $request->only(['priceFrom', 'priceTo', 'beds', 'baths', 'areaFrom', 'areaTo']);
 
         return inertia('Listing/Index', [
-            'listings'=>Listing::all()
+            'filters'=>$filters,
+            'listings'=>Listing::mostRecent()->filter($filters)->paginate(10)->withQueryString()
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
     public function create()
     {
@@ -44,7 +46,7 @@ class ListingController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ListingRequest $request)
     {
@@ -56,7 +58,7 @@ class ListingController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
     public function show(Listing $listing)
     {
@@ -71,7 +73,7 @@ class ListingController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response|\Inertia\ResponseFactory
      */
     public function edit(Listing $listing)
     {
@@ -85,7 +87,7 @@ class ListingController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(ListingRequest $request, Listing $listing)
     {
@@ -97,7 +99,7 @@ class ListingController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Listing  $listing)
     {
