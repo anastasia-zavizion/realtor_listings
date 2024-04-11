@@ -19,11 +19,12 @@ class RealtorListingController extends Controller
     public function index(Request $request){
 
         $filters = [
-            'deleted'=>$request->boolean('deleted')
+            'deleted'=>$request->boolean('deleted'),
+            ...$request->only(['by', 'order'])
         ];
 
 
-        $listings = Auth::user()->listings()->mostRecent()->filter($filters)->get();
+        $listings = Auth::user()->listings()->filter($filters)->get();
 
         return inertia('Realtor/Index', [
             'listings' => $listings,
