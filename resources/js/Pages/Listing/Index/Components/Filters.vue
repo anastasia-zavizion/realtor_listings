@@ -69,7 +69,3 @@ const clear = () =>{
 }
 
 </script>
-
-<style scoped>
-
-</style>

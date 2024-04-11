@@ -24,6 +24,10 @@ Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 Route::resource('user-account', \App\Http\Controllers\UserAccountController::class)->only(['create', 'store']);
 
 
-Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (){
+/*Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (){
     Route::resource('listing', \App\Http\Controllers\RealtorListingController::class)->only(['index', 'destroy']);
-});
+});*/
+
+
+Route::resource('realtor', \App\Http\Controllers\RealtorListingController::class)->only(['index', 'destroy']);
+

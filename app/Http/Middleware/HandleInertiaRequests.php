@@ -23,10 +23,11 @@ class HandleInertiaRequests extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
-    public function version(Request $request): ?string
+    public function version(Request $request)
     {
         return parent::version($request);
     }
+
 
     /**
      * Defines the props that are shared by default.

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class RealtorListingController extends Controller
 {
@@ -15,11 +16,19 @@ class RealtorListingController extends Controller
     }
 
 
-    public function index(){
+    public function index(Request $request){
+
+        $filters = [
+            'deleted'=>$request->boolean('deleted')
+        ];
+
+
+        $listings = Auth::user()->listings()->mostRecent()->filter($filters)->get();
 
         return inertia('Realtor/Index', [
-            'listings'=>Auth::user()->listings
+            'listings' => $listings,
         ]);
+
     }
 
 

@@ -13,7 +13,7 @@
 
                 </div>
                 <div class="flex gap-4 items-center" v-if="user">
-                    <div class="text-sm text-gray-500">  <Link class="link btn" :href="route('realtor.listing.index')">{{user.name}}</Link> </div>
+                   <div class="text-sm text-gray-500">  <Link class="link btn" :href="route('realtor.index')">{{user.name}}</Link> </div>
                     <Link class="link btn" :href="route('listing.create')">+ New Listing</Link>
                     <div>
 

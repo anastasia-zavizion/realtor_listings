@@ -1,7 +1,16 @@
 <template>
     <h1 class="text-3xl mb-4">Your listings</h1>
     <section>
-        <RealtorFilters></RealtorFilters>
+        <form>
+            <div class="mb-4 mt-4 flex flex-wrap  gap-2">
+                <div class="flex flex-nowrap items-center gap-2">
+                    <input v-model="filterForm.deleted" id="deleted" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600  ring-indigo-500 focus:ring-2 focus:ring-indigo-500"/>
+                    <label for="deleted">Deleted</label>
+                </div>
+
+                <button @click="filter">Filter</button>
+            </div>
+        </form>
     </section>
 
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
@@ -13,15 +22,11 @@
                         <ListingSpace :listing="listing"/>
                     </div>
 
-
                     <ListingAddress :listing="listing"></ListingAddress>
                 </div>
                 <div class="flex items-center gap-1 text-gray-600">
 
-                    <Link class="btn-outline text-xs font-medium">Previw</Link>
-                    <Link class="btn-outline text-xs font-medium">Edit</Link>
-
-                    <Link class="btnSmall" as="button" method="DELETE" :href="route('realtor.listing.destroy',listing.id)">Delete
+                    <Link class="btnSmall" as="button" method="DELETE" :href="route('realtor.destroy',listing.id)">Delete
                     </Link>
 
                 </div>
@@ -39,10 +44,26 @@ import Box from "../../Components/UI/Box";
 import ListingSpace from "../../Components/ListingSpace";
 import Price from "../../Components/Price";
 import ListingAddress from "../../Components/ListingAddress";
-import RealtorFilters from "./Index/Components/RealtorFilters";
+import RealtorFilters from "./Components/RealtorFilters";
+import { Inertia } from '@inertiajs/inertia'
+import { reactive, watch } from 'vue'
+import {debounce} from 'lodash';
 
 defineProps({
     listings:Array
 })
+
+const filterForm = reactive({
+    deleted: false,
+})
+
+watch(
+    filterForm, debounce(()=>Inertia.get(
+        route('realtor.index'),
+        filterForm,
+        {preserveState: true, preserveScroll: true},
+    ), 1000)
+)
+
 
 </script>
