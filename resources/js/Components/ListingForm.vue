@@ -87,7 +87,7 @@ const handleSubmit = () => {
     if(props.methodName === 'create'){
         form.post(route('listing.store'));
     }else{
-        form.put(route('listing.update',props.listing.id));
+        form.put(route('realtor.listing.update',props.listing.id));
     }
 };
 

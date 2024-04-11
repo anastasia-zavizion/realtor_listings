@@ -25,7 +25,7 @@
     </section>
 
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <Box v-for="listing in listings" :key="listing.id">
+        <Box v-for="listing in listings.data" :key="listing.id">
             <div class="flex flex-col md:flex-row gap-2 md:items-center justify-between">
                 <div>
                     <div class="xl:flex items-center gap-2">
@@ -37,7 +37,14 @@
                 </div>
                 <div class="flex items-center gap-1 text-gray-600">
 
-                    <Link class="btnSmall" as="button" method="DELETE" :href="route('realtor.destroy',listing.id)">Delete
+
+                    <Link class="btnSmall" :href="route('realtor.listing.edit',{listing:listing.id})">Edit
+                    </Link>
+
+                    <Link as="a" target="_blank" class="btnSmall" :href="route('listing.show', listing.id)" >Preview</Link>
+
+
+                    <Link class="btnSmall" as="button" method="DELETE" :href="route('realtor.listing.destroy',{listing:listing.id})">Delete
                     </Link>
 
                 </div>
@@ -45,6 +52,10 @@
             </div>
         </Box>
     </section>
+
+    <div v-if="listings.data.length" class="w-full flex justify-center mt-8 mb-8">
+        <Pagination :links="listings.links"/>
+    </div>
 
 </template>
 
@@ -59,9 +70,11 @@ import RealtorFilters from "./Components/RealtorFilters";
 import { Inertia } from '@inertiajs/inertia'
 import { reactive, watch, computed } from 'vue'
 import {debounce} from 'lodash';
+import Pagination from "../../Components/UI/Pagination";
 
-defineProps({
-    listings:Array
+const props = defineProps({
+    listings:Array,
+    filters:Array
 })
 
 const sortLabels = {
@@ -91,14 +104,14 @@ const sortLabels = {
 const sortOptions = computed(()=>sortLabels[filterForm.by])
 
 const filterForm = reactive({
-    deleted: false,
-    by:'created_at',
-    order:'desc'
+    deleted: props.filters.deleted ?? false,
+    by: props.filters.by ?? 'created_at',
+    order: props.filters.order ?? 'desc'
 })
 
 watch(
     filterForm, debounce(()=>Inertia.get(
-        route('realtor.index'),
+        route('realtor.listing.index'),
         filterForm,
         {preserveState: true, preserveScroll: true},
     ), 1000)

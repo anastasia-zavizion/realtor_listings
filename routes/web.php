@@ -15,7 +15,7 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/',[\App\Http\Controllers\ListingController::class, 'index']);
 Route::get('/hello',[\App\Http\Controllers\IndexController::class, 'index']);
-Route::resource('listing', \App\Http\Controllers\ListingController::class)->except(['destroy']);
+Route::resource('listing', \App\Http\Controllers\ListingController::class)->only(['index', 'show']);
 
 Route::get('login', [AuthController::class, 'create'])->name('login');
 Route::post('login', [AuthController::class, 'store'])->name('login.store');
@@ -24,10 +24,10 @@ Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 Route::resource('user-account', \App\Http\Controllers\UserAccountController::class)->only(['create', 'store']);
 
 
-/*Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (){
-    Route::resource('listing', \App\Http\Controllers\RealtorListingController::class)->only(['index', 'destroy']);
-});*/
+Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (){
+    Route::resource('listing', \App\Http\Controllers\RealtorListingController::class);
+});
 
 
-Route::resource('realtor', \App\Http\Controllers\RealtorListingController::class)->only(['index', 'destroy']);
+/*Route::resource('realtor', \App\Http\Controllers\RealtorListingController::class);*/
 

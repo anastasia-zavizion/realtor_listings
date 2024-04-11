@@ -13,11 +13,6 @@
             <ListingAddress :listing="listing" class="text-gray-800"></ListingAddress>
         </Link>
 
-        <div class="mb-2 mt-2">
-            <Link class="btnSmall" :href="route('listing.edit',listing.id)">Edit
-            </Link>
-        </div>
-
     </Box>
 </template>
 
