@@ -25,9 +25,9 @@
     </section>
 
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-        <Box v-for="listing in listings.data" :key="listing.id">
+        <Box v-for="listing in listings.data" :key="listing.id" :class="{'border-dashed':listing.deleted_at}">
             <div class="flex flex-col md:flex-row gap-2 md:items-center justify-between">
-                <div>
+                <div :class="{'opacity-25':listing.deleted_at}">
                     <div class="xl:flex items-center gap-2">
                         <Price class="text-2xl font-medium" :price="listing.price"/>
                         <ListingSpace :listing="listing"/>
@@ -44,7 +44,10 @@
                     <Link as="a" target="_blank" class="btnSmall" :href="route('listing.show', listing.id)" >Preview</Link>
 
 
-                    <Link class="btnSmall" as="button" method="DELETE" :href="route('realtor.listing.destroy',{listing:listing.id})">Delete
+                    <Link v-if="!listing.deleted_at" class="btnSmall" as="button" method="DELETE" :href="route('realtor.listing.destroy',{listing:listing.id})">Delete
+                    </Link>
+
+                    <Link v-else class="btnSmall" as="button" method="PUT" :href="route('realtor.listing.restore',{listing:listing.id})">Restore
                     </Link>
 
                 </div>
