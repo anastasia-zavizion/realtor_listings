@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Listing extends Model
@@ -35,5 +36,9 @@ class Listing extends Model
             ->when($filters['by'] ?? false, fn($query, $value) =>
             !in_array($value,$this->sortable) ? $query : $query->orderBy($value, $filters['order'] ?? 'DESC'));
 
+    }
+
+    public function images() :HasMany{
+        return $this->hasMany(ListingImage::class);
     }
 }
