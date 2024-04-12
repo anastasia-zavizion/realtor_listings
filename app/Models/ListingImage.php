@@ -11,8 +11,13 @@ class ListingImage extends Model
     use HasFactory;
 
     protected $fillable = ['file_name'];
+    protected $appends = ['src'];
 
     public function listing() :BelongsTo{
         return $this->belongsTo(Listing::class);
+    }
+
+    public function getSrcAttribute(){
+        return asset("storage/{$this->file_name}");
     }
 }
