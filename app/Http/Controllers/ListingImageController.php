@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use App\Models\ListingImage;
+use Illuminate\Support\Facades\Storage;
 
 class ListingImageController extends Controller
 {
@@ -30,7 +31,9 @@ class ListingImageController extends Controller
 
     }
 
-    public function destroy(){
-
+    public function destroy($listing, ListingImage $image){
+        Storage::disk('public')->delete($image->file_name);
+        $image->delete();
+        return redirect()->back()->with('success', 'Image was deleted');
     }
 }
