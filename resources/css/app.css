@@ -5,7 +5,7 @@
 
 @layer components {
 
-     input, select{
+     input:not([type='file']), select{
          @apply pl-2 border border-gray-700;
     }
 

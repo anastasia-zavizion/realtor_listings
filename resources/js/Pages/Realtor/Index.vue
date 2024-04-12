@@ -35,22 +35,31 @@
 
                     <ListingAddress :listing="listing"></ListingAddress>
                 </div>
-                <div class="flex items-center gap-1 text-gray-600">
+
+                <section>
+                    <div class="flex items-center gap-1 text-gray-600">
 
 
-                    <Link class="btnSmall" :href="route('realtor.listing.edit',{listing:listing.id})">Edit
-                    </Link>
+                        <Link class="btnSmall" :href="route('realtor.listing.edit',{listing:listing.id})">Edit
+                        </Link>
 
-                    <Link as="a" target="_blank" class="btnSmall" :href="route('listing.show', listing.id)" >Preview</Link>
+                        <Link as="a" target="_blank" class="btnSmall" :href="route('listing.show', listing.id)" >Preview</Link>
 
 
-                    <Link v-if="!listing.deleted_at" class="btnSmall" as="button" method="DELETE" :href="route('realtor.listing.destroy',{listing:listing.id})">Delete
-                    </Link>
+                        <Link v-if="!listing.deleted_at" class="btnSmall" as="button" method="DELETE" :href="route('realtor.listing.destroy',{listing:listing.id})">Delete
+                        </Link>
 
-                    <Link v-else class="btnSmall" as="button" method="PUT" :href="route('realtor.listing.restore',{listing:listing.id})">Restore
-                    </Link>
+                        <Link v-else class="btnSmall" as="button" method="PUT" :href="route('realtor.listing.restore',{listing:listing.id})">Restore
+                        </Link>
 
-                </div>
+                    </div>
+
+                    <div class="mt-2">
+                        <Link  class="btn-outline w-full block text-center" :href="route('realtor.listing.image.create', listing.id)">Images</Link>
+
+                    </div>
+                </section>
+
 
             </div>
         </Box>
