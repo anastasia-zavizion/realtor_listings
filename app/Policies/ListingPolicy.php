@@ -15,7 +15,6 @@ class ListingPolicy
                 return true;
             }
         }
-
     }
 
     /**
@@ -29,7 +28,7 @@ class ListingPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Listing $listing): bool
+    public function view(?User $user, Listing $listing): bool
     {
         return true;
     }
@@ -39,7 +38,8 @@ class ListingPolicy
      */
     public function create(User $user): bool
     {
-       return true;
+
+        return true;
     }
 
     /**
@@ -64,6 +64,7 @@ class ListingPolicy
      */
     public function restore(User $user, Listing $listing): bool
     {
+
         return $listing->user_id === $user->id;
     }
 
@@ -72,6 +73,7 @@ class ListingPolicy
      */
     public function forceDelete(User $user, Listing $listing): bool
     {
+
         return $listing->user_id === $user->id;
     }
 }
