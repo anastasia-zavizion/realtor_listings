@@ -32,6 +32,6 @@ Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (
 
 });
 
+Route::resource('listing.offer', \App\Http\Controllers\ListingOfferController::class)->only(['store']);
 
-/*Route::resource('realtor', \App\Http\Controllers\RealtorListingController::class);*/
 
