@@ -27789,6 +27789,10 @@ var map = {
 		"./resources/js/Pages/Listing/Show/Components/MakeOffer.vue",
 		"resources_js_Pages_Listing_Show_Components_MakeOffer_vue"
 	],
+	"./Listing/Show/Components/OfferMade.vue": [
+		"./resources/js/Pages/Listing/Show/Components/OfferMade.vue",
+		"resources_js_Pages_Listing_Show_Components_OfferMade_vue"
+	],
 	"./Realtor/Components/RealtorFilters.vue": [
 		"./resources/js/Pages/Realtor/Components/RealtorFilters.vue",
 		"resources_js_Pages_Realtor_Components_RealtorFilters_vue"
@@ -32908,7 +32912,7 @@ function C(t) {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Layouts_MainLayout_vue":1,"resources_js_Pages_Auth_Login_vue":1,"resources_js_Pages_Index_Index_vue":1,"resources_js_Pages_Index_Show_vue":1,"resources_js_Pages_Listing_Index_vue":1,"resources_js_Pages_Listing_Index_Components_Filters_vue":1,"resources_js_Pages_Listing_Index_Components_Listing_vue":1,"resources_js_Pages_Listing_Show_vue":1,"resources_js_Pages_Listing_Show_Components_MakeOffer_vue":1,"resources_js_Pages_Realtor_Components_RealtorFilters_vue":1,"resources_js_Pages_Realtor_Create_vue":1,"resources_js_Pages_Realtor_Edit_vue":1,"resources_js_Pages_Realtor_Index_vue":1,"resources_js_Pages_Realtor_ListingImage_Create_vue":1,"resources_js_Pages_UserAccount_Create_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Layouts_MainLayout_vue":1,"resources_js_Pages_Auth_Login_vue":1,"resources_js_Pages_Index_Index_vue":1,"resources_js_Pages_Index_Show_vue":1,"resources_js_Pages_Listing_Index_vue":1,"resources_js_Pages_Listing_Index_Components_Filters_vue":1,"resources_js_Pages_Listing_Index_Components_Listing_vue":1,"resources_js_Pages_Listing_Show_vue":1,"resources_js_Pages_Listing_Show_Components_MakeOffer_vue":1,"resources_js_Pages_Listing_Show_Components_OfferMade_vue":1,"resources_js_Pages_Realtor_Components_RealtorFilters_vue":1,"resources_js_Pages_Realtor_Create_vue":1,"resources_js_Pages_Realtor_Edit_vue":1,"resources_js_Pages_Realtor_Index_vue":1,"resources_js_Pages_Realtor_ListingImage_Create_vue":1,"resources_js_Pages_UserAccount_Create_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
