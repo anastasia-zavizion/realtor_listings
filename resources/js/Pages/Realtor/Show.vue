@@ -19,12 +19,15 @@
            <Offer  :listing-price="listing.price" :offer="offer" :key="offer.id" class="mb-4" v-for="offer in listing.offers"/>
         </div>
 
-        <Box class="md:col-span-5">
-            <template #header>Basic Info</template>
-            <Price :price="listing.price" class="text-2xl font-bold" />
-            <ListingSpace :listing="listing" class="text-lg" />
-            <ListingAddress :listing="listing" class="text-gray-500" />
-        </Box>
+        <div class="md:col-span-5">
+            <Box>
+                <template #header>Basic Info</template>
+                <Price :price="listing.price" class="text-2xl font-bold" />
+                <ListingSpace :listing="listing" class="text-lg" />
+                <ListingAddress :listing="listing" class="text-gray-500" />
+            </Box>
+        </div>
+
     </section>
 </template>
 
@@ -36,6 +39,7 @@ import ListingSpace from "../../Components/ListingSpace";
 import ListingAddress from "../../Components/ListingAddress";
 import {computed} from "vue";
 import Offer from "./Show/Components/Offer";
+import Box from "../../Components/UI/Box";
 
 const props = defineProps({
     listing:Object

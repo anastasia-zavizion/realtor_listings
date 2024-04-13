@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,8 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/',[\App\Http\Controllers\ListingController::class, 'index']);
-Route::get('/hello',[\App\Http\Controllers\IndexController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\ListingController::class, 'index']);
+Route::get('/hello', [\App\Http\Controllers\IndexController::class, 'index']);
 Route::resource('listing', \App\Http\Controllers\ListingController::class)->only(['index', 'show']);
 
 Route::get('login', [AuthController::class, 'create'])->name('login');
@@ -24,11 +25,13 @@ Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 Route::resource('user-account', \App\Http\Controllers\UserAccountController::class)->only(['create', 'store']);
 
 
-Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (){
+Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function () {
     Route::resource('listing', \App\Http\Controllers\RealtorListingController::class)->withTrashed();
-    Route::put('listing/restore/{listing}',[\App\Http\Controllers\RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();
+    Route::put('listing/restore/{listing}', [\App\Http\Controllers\RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();
 
     Route::resource('listing.image', \App\Http\Controllers\ListingImageController::class)->only(['create', 'store', 'destroy']);
+
+    Route::name('offer.accept')->put('offer/{offer}/accept', \App\Http\Controllers\RealtorListingAcceptOfferController::class);
 
 });
 
