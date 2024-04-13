@@ -44,6 +44,9 @@
 
                 </div>
             </Box>
+
+
+            <MakeOffer :listingId="listing.id" :price="listing.price"></MakeOffer>
         </div>
     </div>
 
@@ -56,6 +59,7 @@ import ListingSpace from "../../Components/ListingSpace";
 import Box from "../../Components/UI/Box";
 import {computed, ref} from "vue";
 import {useMonthlyPayment} from "../../Composables/useMonthlyPayment";
+import MakeOffer from "./Show/Components/MakeOffer";
 
 const props = defineProps({
     'listing':Object
