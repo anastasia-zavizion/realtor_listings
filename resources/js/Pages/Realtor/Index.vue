@@ -1,4 +1,5 @@
 <template>
+    gtg
     <h1 class="text-3xl mb-4">Your listings</h1>
     <section>
         <form>
@@ -55,11 +56,10 @@
                     </div>
 
                     <div class="mt-2">
-                        <Link  class="btn-outline w-full block text-center" :href="route('realtor.listing.image.create', listing.id)">Images</Link>
+                        <Link  class="btn-outline w-full block text-center" :href="route('realtor.listing.image.create', listing.id)">Images ({{listing.images_count}})</Link>
 
                     </div>
                 </section>
-
 
             </div>
         </Box>

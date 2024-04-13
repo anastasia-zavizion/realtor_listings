@@ -3,10 +3,16 @@
         <template #header>Upload New Images</template>
         <form @submit.prevent="upload">
           <section class="flex items-center gap-2 mt-4 mb-4">
-              <input class="border file:cursor-pointer file:hover:bg-gray-200 rounded-md file:px-4 file:py-2 border-gray-200 file:border-0 file:bg-gray-100 file:font-medium" @input="addFiles" type="file" multiple />
+              <input ref="fileUpload" class="border file:cursor-pointer file:hover:bg-gray-200 rounded-md file:px-4 file:py-2 border-gray-200 file:border-0 file:bg-gray-100 file:font-medium" @input="addFiles" type="file" multiple />
               <button :disabled="!filesExists" class="btnSmall disabled:opacity-25" type="submit">Send</button>
               <button :disabled="!filesExists" @click="reset" class="btnSmall disabled:opacity-25" type="button">Reset</button>
           </section>
+
+            <div v-if="imageErrors.length" class="inputError">
+              <div :key="index" v-for="(error,index) in imageErrors">
+                  {{error}}
+              </div>
+            </div>
         </form>
     </Box>
 
@@ -19,7 +25,6 @@
             </div>
         </section>
     </Box>
-
 </template>
 
 <script setup>
@@ -27,11 +32,16 @@ import {Link} from "@inertiajs/vue3";
 
 import Box from "../../../Components/UI/Box";
 import {useForm} from "@inertiajs/vue3";
-import {computed} from "vue";
+import {computed,ref} from "vue";
+
+const fileUpload = ref(null);
 
 const props = defineProps({
     listing:Object
 })
+
+const imageErrors = computed(()=> Object.values(form.errors))
+
 
 const form = useForm({
     images:[]
@@ -45,6 +55,9 @@ const upload = () =>{
     form.post(route('realtor.listing.image.store', {listing:props.listing.id}), {
         onSuccess:()=>{
             reset();
+        },
+        onError:()=>{
+            reset();
         }
     });
 }
@@ -56,7 +69,8 @@ const addFiles = (event)=>{
 }
 
 const reset = ()=>{
-    form.reset('images');
+    form.images = [];
+    fileUpload.value.value = null;
 }
 
 </script>

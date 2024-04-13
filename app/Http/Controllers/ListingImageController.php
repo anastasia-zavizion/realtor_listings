@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ListingImageRequest;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use App\Models\ListingImage;
@@ -14,7 +15,7 @@ class ListingImageController extends Controller
         return inertia('Realtor/ListingImage/Create', ['listing'=>$listing]);
     }
 
-    public function store(Listing $listing,Request $request){
+    public function store(Listing $listing,ListingImageRequest $request){
 
         if($request->hasFile('images')){
             foreach ($request->file('images') as $file){
