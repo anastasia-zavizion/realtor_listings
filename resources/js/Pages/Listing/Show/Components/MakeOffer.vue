@@ -26,7 +26,8 @@
 import Box from "../../../../Components/UI/Box";
 import Price from "../../../../Components/Price";
 import {useForm} from "@inertiajs/vue3";
-import {computed} from "vue";
+import {computed, watch} from "vue";
+import {debounce} from 'lodash';
 
 const props = defineProps({
     listingId:Number,
@@ -45,6 +46,9 @@ const makeOffer = ()=>{
         preserveScroll:true,
     })
 }
+
+const emit = defineEmits(['offerUpdated'])
+watch(()=>form.amount, debounce((value)=> emit('offerUpdated',value) ), 2000);
 
 </script>
 
