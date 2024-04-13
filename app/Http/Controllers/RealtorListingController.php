@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ListingRequest;
 use App\Models\Listing;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -39,7 +40,7 @@ class RealtorListingController extends Controller
     }
 
     public function show(Listing $listing){
-        $listing->load(['offers']);
+        $listing->load(['offers.bidder']);
         return inertia('Realtor/Show', ['listing'=>$listing]);
     }
 
