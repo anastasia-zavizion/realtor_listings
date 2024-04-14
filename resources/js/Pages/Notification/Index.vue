@@ -11,7 +11,7 @@
                             listing</Link></span> was made
                 </div>
                 <div>
-                    <button class="btn-outline uppercase" v-if="!notification.read_at">Mark as read</button>
+                    <Link v-if="!notification.read_at" class="btn-outline uppercase" method="put" as="button" :href="route('notification.seen', notification.id)">Mark as read</Link>
                 </div>
 
             </div>

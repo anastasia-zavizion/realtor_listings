@@ -39,4 +39,6 @@ Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (
 
 Route::resource('listing.offer', \App\Http\Controllers\ListingOfferController::class)->only(['store']);
 
+Route::name('notification.seen')->put('notification/{notification}/seen', \App\Http\Controllers\NottificationSeenController::class)->middleware('auth');
+
 

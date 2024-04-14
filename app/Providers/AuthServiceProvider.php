@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-       //  'App\Models\Listing' => 'App\Policies\ListingPolicy',
+         'Illuminate\Notifications\DatabaseNotification' => 'App\Policies\NotificationPolicy',
     ];
 
     /**
