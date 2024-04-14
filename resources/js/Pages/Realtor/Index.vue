@@ -1,5 +1,4 @@
 <template>
-    gtg
     <h1 class="text-3xl mb-4">Your listings</h1>
     <section>
         <form>
@@ -24,16 +23,18 @@
             </div>
         </form>
     </section>
-
     <section class="grid grid-cols-1 lg:grid-cols-2 gap-2">
         <Box v-for="listing in listings.data" :key="listing.id" :class="{'border-dashed':listing.deleted_at}">
+
             <div class="flex flex-col md:flex-row gap-2 md:items-center justify-between">
                 <div :class="{'opacity-25':listing.deleted_at}">
+
+                    <div v-if="listing.sold_at"><span class="rounded-md font-bold text-green-900  ml-2 p-1 bg-green-100 uppercase">SOLD</span></div>
+
                     <div class="xl:flex items-center gap-2">
                         <Price class="text-2xl font-medium" :price="listing.price"/>
                         <ListingSpace :listing="listing"/>
                     </div>
-
                     <ListingAddress :listing="listing"></ListingAddress>
                 </div>
 
