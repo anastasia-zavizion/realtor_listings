@@ -18,8 +18,6 @@
                     </select>
 
                 </div>
-
-                <button @click="filter">Filter</button>
             </div>
         </form>
     </section>

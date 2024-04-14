@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
         return array_merge(parent::share($request), [
            'flash'=>[
                'success'=>$request->session()->get('success')
@@ -47,6 +48,7 @@ class HandleInertiaRequests extends Middleware
                 'id'=>$request->user()->id,
                 'name'=>$request->user()->name,
                 'email'=>$request->user()->email,
+                'notificationCount'=>$request->user()->unreadNotifications()->count()
             ] : null
         ]);
     }
