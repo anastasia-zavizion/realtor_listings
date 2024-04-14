@@ -25,6 +25,8 @@ Route::delete('logout', [AuthController::class, 'destroy'])->name('logout');
 Route::resource('user-account', \App\Http\Controllers\UserAccountController::class)->only(['create', 'store']);
 
 
+Route::resource('notification', \App\Http\Controllers\NotificationController::class)->middleware('auth')->only(['index']);
+
 Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function () {
     Route::resource('listing', \App\Http\Controllers\RealtorListingController::class)->withTrashed();
     Route::put('listing/restore/{listing}', [\App\Http\Controllers\RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();

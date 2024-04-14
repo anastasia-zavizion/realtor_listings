@@ -874,6 +874,10 @@ input:not([type='file']), select {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 .pr-2 {
   padding-right: 0.5rem;
 }
@@ -952,6 +956,10 @@ input:not([type='file']), select {
 .text-green-900 {
   --tw-text-opacity: 1;
   color: rgb(20 83 45 / var(--tw-text-opacity));
+}
+.text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 .opacity-25 {
   opacity: 0.25;

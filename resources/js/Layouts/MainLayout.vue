@@ -12,9 +12,9 @@
                 <div>
                 </div>
                 <div class="flex gap-4 items-center" v-if="user">
-                    <div v-if="notificationCount" class="text-gray-500 relative pr-2 py-2 cursor-pointer">
+                    <Link  :href="route('notification.index')" v-if="notificationCount" class="text-gray-500 relative pr-2 py-2 cursor-pointer">
                         🔔<div class="absolute right-0 top-0 w-5 h-5 bg-red-700 text-white font-medium border border-white rounded-full text-xs text-center">{{notificationCount}}</div>
-                    </div>
+                    </Link>
 
                    <div class="text-sm text-gray-500">  <Link class="link btn" :href="route('realtor.listing.index')">{{user.name}}</Link> </div>
                     <Link class="link btn" :href="route('realtor.listing.create')">+ New Listing</Link>
