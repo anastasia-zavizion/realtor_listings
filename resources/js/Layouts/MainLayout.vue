@@ -16,8 +16,8 @@
                         🔔<div class="absolute right-0 top-0 w-5 h-5 bg-red-700 text-white font-medium border border-white rounded-full text-xs text-center">{{notificationCount}}</div>
                     </Link>
 
-                   <div class="text-sm text-gray-500">  <Link class="link btn" :href="route('realtor.listing.index')">{{user.name}}</Link> </div>
-                    <Link class="link btn" :href="route('realtor.listing.create')">+ New Listing</Link>
+                   <div  v-if="user.email_verified_at !== null" class="text-sm text-gray-500">  <Link class="link btn" :href="route('realtor.listing.index')">{{user.name}}</Link> </div>
+                    <Link v-if="user.email_verified_at" class="link btn" :href="route('realtor.listing.create')">+ New Listing</Link>
                     <div>
 
                         <Link class="link btn" method="delete" as="button" :href="route('logout')">Logout</Link>
@@ -65,6 +65,9 @@ const successMessage = computed(() => {
 const user = computed(() => {
     return page.props.user;
 });
+
+console.log(user);
+
 
 const notificationCount = computed(() => {
     return Math.min(page.props.user.notificationCount,9);

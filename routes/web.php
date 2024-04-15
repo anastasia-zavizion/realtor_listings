@@ -27,7 +27,7 @@ Route::resource('user-account', \App\Http\Controllers\UserAccountController::cla
 
 Route::resource('notification', \App\Http\Controllers\NotificationController::class)->middleware('auth')->only(['index']);
 
-Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function () {
+Route::prefix('realtor')->name('realtor.')->middleware(['auth','verified'])->group(function () {
     Route::resource('listing', \App\Http\Controllers\RealtorListingController::class)->withTrashed();
     Route::put('listing/restore/{listing}', [\App\Http\Controllers\RealtorListingController::class, 'restore'])->name('listing.restore')->withTrashed();
 
@@ -36,6 +36,28 @@ Route::prefix('realtor')->name('realtor.')->middleware('auth')->group(function (
     Route::name('offer.accept')->put('offer/{offer}/accept', \App\Http\Controllers\RealtorListingAcceptOfferController::class);
 
 });
+
+
+Route::get('/email/verify/{id}/{hash}', function (\Illuminate\Foundation\Auth\EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('listing.index')->with('success','Email was verified');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::post('/email/verification-notification', function (Illuminate\Http\Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('success', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('email/verify', function (){
+
+    return inertia('Auth/VerifyEmail');
+
+})->middleware('auth')->name('verification.notice');
+
+
+
 
 Route::resource('listing.offer', \App\Http\Controllers\ListingOfferController::class)->only(['store']);
 

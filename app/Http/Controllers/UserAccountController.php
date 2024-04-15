@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class UserAccountController extends Controller
 {
@@ -25,6 +26,10 @@ class UserAccountController extends Controller
 
         ]);
         $user = User::create($validated);
+
+        event(new Registered($user));
+
+
         Auth::login($user);
 
         return redirect()->route('listing.index')->with('success', 'Account created');
