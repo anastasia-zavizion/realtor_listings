@@ -8,6 +8,9 @@ use App\Models\Offer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class RealtorListingController extends Controller
 {
@@ -19,12 +22,10 @@ class RealtorListingController extends Controller
 
 
     public function index(Request $request){
-
         $filters = [
             'deleted'=>$request->boolean('deleted'),
             ...$request->only(['by', 'order'])
         ];
-
 
         $listings = Auth::user()->listings()
             ->withCount('images')

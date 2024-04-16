@@ -18,7 +18,7 @@
 
     <Box class="mt-4" v-if="listing.images">
         <template #header>Current Images</template>
-        <section class="mt-4 grid grid-cols-3 gap-4">
+        <section class="mt-4 grid grid-cols-4 gap-4">
             <div class="flex flex-col justify-between" :key="image.id" v-for="image in listing.images">
                 <img :src="image.src" class="rounded-md"/>
                 <Link as="button" method="DELETE" class="btn-outline text-sm mt-2" :href="route('realtor.listing.image.destroy', {listing:listing.id, image:image.id})">Delete</Link>

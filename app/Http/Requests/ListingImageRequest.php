@@ -22,7 +22,7 @@ class ListingImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'images.*'=>'mimes:jpg,png,jpeg|max:5000'
+            'images.*'=>'mimes:jpg,png,jpeg|max:10000'
         ];
     }
 
